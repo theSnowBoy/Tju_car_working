@@ -78,25 +78,50 @@
 	exportControl 	"Public"
 	global     	TRUE
 	logical_models 	(list unit_reference_list
-	    (object Class_Category "价格管理"
+	    (object Class_Category "价格管理用例"
 		quid       	"55BA0544002C"
 		exportControl 	"Public"
 		logical_models 	(list unit_reference_list
-		    (object Class "用户"
+		    (object Class "价格管理员"
 			quid       	"55BA06350311"
 			stereotype 	"Actor")
 		    (object UseCase "NewUseCase"
 			quid       	"55BA061B0078")
-		    (object UseCase "车辆管理"
-			quid       	"55BA062203A7")
+		    (object UseCase "车组管理"
+			quid       	"55BA062203A7"
+			visible_modules 	(list dependency_list
+			    (object Dependency_Relationship
+				quid       	"55BB09F4011E"
+				supplier   	"Use Case View::价格管理用例::创建"
+				quidu      	"55BAC8C30312")
+			    (object Dependency_Relationship
+				quid       	"55BB09F6024F"
+				supplier   	"Use Case View::价格管理用例::修改"
+				quidu      	"55BAC8C501C3")
+			    (object Dependency_Relationship
+				quid       	"55BB09F80227"
+				supplier   	"Use Case View::价格管理用例::删除"
+				quidu      	"55BAC8C603CF")))
 		    (object UseCase "时间因素设置"
 			quid       	"55BA0623027B"
 			visible_modules 	(list dependency_list
 			    (object Dependency_Relationship
 				quid       	"55BA23CA01D9"
 				stereotype 	"derive"
-				supplier   	"Use Case View::价格管理::浮动系数"
-				quidu      	"55BA2376014D")))
+				supplier   	"Use Case View::价格管理用例::浮动系数"
+				quidu      	"55BA2376014D")
+			    (object Dependency_Relationship
+				quid       	"55BB09DC0295"
+				supplier   	"Use Case View::价格管理用例::删除"
+				quidu      	"55BAC8C603CF")
+			    (object Dependency_Relationship
+				quid       	"55BB09DE02FD"
+				supplier   	"Use Case View::价格管理用例::创建"
+				quidu      	"55BAC8C30312")
+			    (object Dependency_Relationship
+				quid       	"55BB09E002AD"
+				supplier   	"Use Case View::价格管理用例::修改"
+				quidu      	"55BAC8C501C3")))
 		    (object UseCase "配置基础价格"
 			quid       	"55BA062402BF")
 		    (object UseCase "价格系数"
@@ -104,8 +129,21 @@
 			visible_modules 	(list dependency_list
 			    (object Dependency_Relationship
 				quid       	"55BA23C501AB"
-				supplier   	"Use Case View::价格管理::浮动系数"
-				quidu      	"55BA2376014D")))
+				supplier   	"Use Case View::价格管理用例::浮动系数"
+				quidu      	"55BA2376014D")
+			    (object Dependency_Relationship
+				quid       	"55BB0A1403CD"
+				stereotype 	"extend"
+				supplier   	"Use Case View::价格管理用例::创建"
+				quidu      	"55BAC8C30312")
+			    (object Dependency_Relationship
+				quid       	"55BB0A17010E"
+				supplier   	"Use Case View::价格管理用例::修改"
+				quidu      	"55BAC8C501C3")
+			    (object Dependency_Relationship
+				quid       	"55BB0A18033F"
+				supplier   	"Use Case View::价格管理用例::删除"
+				quidu      	"55BAC8C603CF")))
 		    (object UseCase "NewUseCase6"
 			quid       	"55BA062502A2")
 		    (object UseCase "产品信息"
@@ -113,82 +151,109 @@
 			visible_modules 	(list dependency_list
 			    (object Dependency_Relationship
 				quid       	"55BA1B5B0088"
-				supplier   	"Use Case View::价格管理::配置基础价格"
+				supplier   	"Use Case View::价格管理用例::配置基础价格"
 				quidu      	"55BA062402BF")
 			    (object Dependency_Relationship
 				quid       	"55BA24830062"
-				supplier   	"Use Case View::价格管理::浮动系数"
+				supplier   	"Use Case View::价格管理用例::浮动系数"
 				quidu      	"55BA2376014D")))
 		    (object UseCase "浮动系数"
 			quid       	"55BA2376014D"
 			visible_modules 	(list dependency_list
 			    (object Dependency_Relationship
 				quid       	"55BA244C0393"
-				supplier   	"Use Case View::价格管理::价格系数"
+				supplier   	"Use Case View::价格管理用例::价格系数"
 				quidu      	"55BA062500D0")
 			    (object Dependency_Relationship
 				quid       	"55BA2451016A"
-				supplier   	"Use Case View::价格管理::时间因素设置"
+				supplier   	"Use Case View::价格管理用例::时间因素设置"
 				quidu      	"55BA0623027B")))
+		    (object UseCase "创建"
+			quid       	"55BAC8C30312"
+			superclasses 	(list inheritance_relationship_list
+			    (object Inheritance_Relationship
+				quid       	"55BAC90C03E1"
+				supplier   	"Use Case View::价格管理用例::车组管理"
+				quidu      	"55BA062203A7")))
+		    (object UseCase "修改"
+			quid       	"55BAC8C501C3"
+			superclasses 	(list inheritance_relationship_list
+			    (object Inheritance_Relationship
+				quid       	"55BAC90E0301"
+				supplier   	"Use Case View::价格管理用例::车组管理"
+				quidu      	"55BA062203A7")))
+		    (object UseCase "删除"
+			quid       	"55BAC8C603CF"
+			superclasses 	(list inheritance_relationship_list
+			    (object Inheritance_Relationship
+				quid       	"55BAC91002C2"
+				supplier   	"Use Case View::价格管理用例::车组管理"
+				quidu      	"55BA062203A7")))
+		    (object UseCase "NewUseCase2"
+			quid       	"55BB094702AC")
+		    (object UseCase "NewUseCase3"
+			quid       	"55BB09480155")
+		    (object UseCase "NewUseCase4"
+			quid       	"55BB094C0087")
 		    (object Association "$UNNAMED$0"
 			quid       	"55BA1ADB01EE"
 			roles      	(list role_list
 			    (object Role "$UNNAMED$1"
 				quid       	"55BA1ADD0133"
-				supplier   	"Use Case View::价格管理::配置基础价格"
+				supplier   	"Use Case View::价格管理用例::配置基础价格"
 				quidu      	"55BA062402BF"
 				is_navigable 	TRUE)
 			    (object Role "$UNNAMED$2"
 				quid       	"55BA1ADD0135"
-				supplier   	"Use Case View::价格管理::用户"
+				supplier   	"Use Case View::价格管理用例::价格管理员"
 				quidu      	"55BA06350311")))
 		    (object Association "$UNNAMED$3"
 			quid       	"55BA1AE402F5"
 			roles      	(list role_list
 			    (object Role "$UNNAMED$4"
 				quid       	"55BA1AE601A0"
-				supplier   	"Use Case View::价格管理::车辆管理"
+				supplier   	"Use Case View::价格管理用例::车组管理"
 				quidu      	"55BA062203A7"
 				is_navigable 	TRUE)
 			    (object Role "$UNNAMED$5"
 				quid       	"55BA1AE601A2"
-				supplier   	"Use Case View::价格管理::用户"
+				supplier   	"Use Case View::价格管理用例::价格管理员"
 				quidu      	"55BA06350311")))
 		    (object Association "$UNNAMED$6"
 			quid       	"55BA1AED02D6"
 			roles      	(list role_list
 			    (object Role "$UNNAMED$7"
 				quid       	"55BA1AEE0229"
-				supplier   	"Use Case View::价格管理::时间因素设置"
+				supplier   	"Use Case View::价格管理用例::时间因素设置"
 				quidu      	"55BA0623027B"
 				is_navigable 	TRUE)
 			    (object Role "$UNNAMED$8"
 				quid       	"55BA1AEE022C"
-				supplier   	"Use Case View::价格管理::用户"
+				supplier   	"Use Case View::价格管理用例::价格管理员"
 				quidu      	"55BA06350311")))
 		    (object Association "$UNNAMED$9"
 			quid       	"55BA1AEF0296"
 			roles      	(list role_list
 			    (object Role "$UNNAMED$10"
 				quid       	"55BA1AF00159"
-				supplier   	"Use Case View::价格管理::价格系数"
+				supplier   	"Use Case View::价格管理用例::价格系数"
 				quidu      	"55BA062500D0"
 				is_navigable 	TRUE)
 			    (object Role "$UNNAMED$11"
 				quid       	"55BA1AF0015B"
-				supplier   	"Use Case View::价格管理::用户"
+				supplier   	"Use Case View::价格管理用例::价格管理员"
 				quidu      	"55BA06350311")))
 		    (object Association "$UNNAMED$12"
 			quid       	"55BA1AF10173"
 			roles      	(list role_list
 			    (object Role "$UNNAMED$13"
 				quid       	"55BA1AF20138"
-				supplier   	"Use Case View::价格管理::产品信息"
+				supplier   	"Use Case View::价格管理用例::产品信息"
 				quidu      	"55BA0628005E"
 				is_navigable 	TRUE)
 			    (object Role "$UNNAMED$14"
 				quid       	"55BA1AF2013A"
-				supplier   	"Use Case View::价格管理::用户"
+				supplier   	"Use Case View::价格管理用例::价格管理员"
 				quidu      	"55BA06350311"))))
 		logical_presentations 	(list unit_reference_list
 		    (object UseCaseDiagram "价格管理"
@@ -198,10 +263,10 @@
 			max_height 	28350
 			max_width  	21600
 			origin_x   	0
-			origin_y   	463
+			origin_y   	428
 			items      	(list diagram_item_list
-			    (object UseCaseView "Use Case View::价格管理::配置基础价格" @1
-				location   	(1056, 160)
+			    (object UseCaseView "Use Case View::价格管理用例::配置基础价格" @1
+				location   	(1088, 64)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -213,7 +278,7 @@
 				    default_color 	TRUE)
 				label      	(object ItemLabel
 				    Parent_View 	@1
-				    location   	(1056, 298)
+				    location   	(1088, 202)
 				    anchor_loc 	1
 				    nlines     	2
 				    max_width  	630
@@ -224,8 +289,8 @@
 				fill_color 	13434879
 				quidu      	"55BA062402BF"
 				height     	118)
-			    (object UseCaseView "Use Case View::价格管理::车辆管理" @2
-				location   	(1440, 416)
+			    (object UseCaseView "Use Case View::价格管理用例::车组管理" @2
+				location   	(1424, 352)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -237,19 +302,19 @@
 				    default_color 	TRUE)
 				label      	(object ItemLabel
 				    Parent_View 	@2
-				    location   	(1440, 554)
+				    location   	(1424, 490)
 				    anchor_loc 	1
 				    nlines     	2
 				    max_width  	630
 				    justify    	0
-				    label      	"车辆管理")
+				    label      	"车组管理")
 				icon_style 	"Icon"
 				line_color 	3342489
 				fill_color 	13434879
 				quidu      	"55BA062203A7"
 				height     	118)
-			    (object UseCaseView "Use Case View::价格管理::时间因素设置" @3
-				location   	(1456, 720)
+			    (object UseCaseView "Use Case View::价格管理用例::时间因素设置" @3
+				location   	(1600, 832)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -261,7 +326,7 @@
 				    default_color 	TRUE)
 				label      	(object ItemLabel
 				    Parent_View 	@3
-				    location   	(1456, 858)
+				    location   	(1600, 970)
 				    anchor_loc 	1
 				    nlines     	2
 				    max_width  	630
@@ -272,8 +337,8 @@
 				fill_color 	13434879
 				quidu      	"55BA0623027B"
 				height     	118)
-			    (object UseCaseView "Use Case View::价格管理::价格系数" @4
-				location   	(1664, 992)
+			    (object UseCaseView "Use Case View::价格管理用例::价格系数" @4
+				location   	(1744, 1248)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -285,7 +350,7 @@
 				    default_color 	TRUE)
 				label      	(object ItemLabel
 				    Parent_View 	@4
-				    location   	(1664, 1130)
+				    location   	(1744, 1386)
 				    anchor_loc 	1
 				    nlines     	2
 				    max_width  	630
@@ -296,7 +361,31 @@
 				fill_color 	13434879
 				quidu      	"55BA062500D0"
 				height     	118)
-			    (object ClassView "Class" "Use Case View::价格管理::用户" @5
+			    (object UseCaseView "Use Case View::价格管理用例::产品信息" @5
+				location   	(768, 1376)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@5
+				    location   	(768, 1514)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	630
+				    justify    	0
+				    label      	"产品信息")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BA0628005E"
+				height     	118)
+			    (object ClassView "Class" "Use Case View::价格管理用例::价格管理员" @6
 				ShowCompartmentStereotypes 	TRUE
 				IncludeAttribute 	TRUE
 				IncludeOperation 	TRUE
@@ -311,21 +400,21 @@
 				    color      	0
 				    default_color 	TRUE)
 				label      	(object ItemLabel
-				    Parent_View 	@5
+				    Parent_View 	@6
 				    location   	(448, 704)
 				    anchor_loc 	1
 				    nlines     	2
-				    max_width  	325
+				    max_width  	328
 				    justify    	0
-				    label      	"用户")
+				    label      	"价格管理员")
 				icon       	"Actor"
 				icon_style 	"Icon"
 				line_color 	3342489
 				quidu      	"55BA06350311"
 				annotation 	8
 				autoResize 	TRUE)
-			    (object AssociationViewNew "$UNNAMED$0" @6
-				location   	(712, 376)
+			    (object AssociationViewNew "$UNNAMED$0" @7
+				location   	(728, 331)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -339,32 +428,32 @@
 				line_color 	3342489
 				quidu      	"55BA1ADB01EE"
 				roleview_list 	(list RoleViews
-				    (object RoleView "$UNNAMED$1" @7
-					Parent_View 	@6
-					location   	(264, -168)
+				    (object RoleView "$UNNAMED$1" @8
+					Parent_View 	@7
+					location   	(280, -213)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1ADD0133"
-					client     	@6
+					client     	@7
 					supplier   	@1
 					vertices   	(list Points
-					    (712, 376)
-					    (919, 246))
+					    (728, 331)
+					    (951, 165))
 					line_style 	0)
-				    (object RoleView "$UNNAMED$2" @8
-					Parent_View 	@6
-					location   	(264, -168)
+				    (object RoleView "$UNNAMED$2" @9
+					Parent_View 	@7
+					location   	(280, -213)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1ADD0135"
-					client     	@6
-					supplier   	@5
+					client     	@7
+					supplier   	@6
 					vertices   	(list Points
-					    (712, 376)
-					    (505, 506))
+					    (728, 331)
+					    (505, 497))
 					line_style 	0)))
-			    (object AssociationViewNew "$UNNAMED$3" @9
-				location   	(916, 479)
+			    (object AssociationViewNew "$UNNAMED$3" @10
+				location   	(909, 448)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -378,32 +467,32 @@
 				line_color 	3342489
 				quidu      	"55BA1AE402F5"
 				roleview_list 	(list RoleViews
-				    (object RoleView "$UNNAMED$4" @10
-					Parent_View 	@9
-					location   	(468, -65)
+				    (object RoleView "$UNNAMED$4" @11
+					Parent_View 	@10
+					location   	(461, -96)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1AE601A0"
-					client     	@9
+					client     	@10
 					supplier   	@2
 					vertices   	(list Points
-					    (916, 479)
-					    (1328, 427))
+					    (909, 448)
+					    (1313, 369))
 					line_style 	0)
-				    (object RoleView "$UNNAMED$5" @11
-					Parent_View 	@9
-					location   	(468, -65)
+				    (object RoleView "$UNNAMED$5" @12
+					Parent_View 	@10
+					location   	(461, -96)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1AE601A2"
-					client     	@9
-					supplier   	@5
+					client     	@10
+					supplier   	@6
 					vertices   	(list Points
-					    (916, 479)
-					    (505, 532))
+					    (909, 448)
+					    (505, 528))
 					line_style 	0)))
-			    (object AssociationViewNew "$UNNAMED$6" @12
-				location   	(925, 624)
+			    (object AssociationViewNew "$UNNAMED$6" @13
+				location   	(996, 679)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -417,32 +506,32 @@
 				line_color 	3342489
 				quidu      	"55BA1AED02D6"
 				roleview_list 	(list RoleViews
-				    (object RoleView "$UNNAMED$7" @13
-					Parent_View 	@12
-					location   	(477, 80)
+				    (object RoleView "$UNNAMED$7" @14
+					Parent_View 	@13
+					location   	(548, 135)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1AEE0229"
-					client     	@12
+					client     	@13
 					supplier   	@3
 					vertices   	(list Points
-					    (925, 624)
-					    (1345, 696))
+					    (996, 679)
+					    (1488, 802))
 					line_style 	0)
-				    (object RoleView "$UNNAMED$8" @14
-					Parent_View 	@12
-					location   	(477, 80)
+				    (object RoleView "$UNNAMED$8" @15
+					Parent_View 	@13
+					location   	(548, 135)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1AEE022C"
-					client     	@12
-					supplier   	@5
+					client     	@13
+					supplier   	@6
 					vertices   	(list Points
-					    (925, 624)
-					    (505, 552))
+					    (996, 679)
+					    (505, 556))
 					line_style 	0)))
-			    (object AssociationViewNew "$UNNAMED$9" @15
-				location   	(1029, 756)
+			    (object AssociationViewNew "$UNNAMED$9" @16
+				location   	(1072, 882)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -456,56 +545,32 @@
 				line_color 	3342489
 				quidu      	"55BA1AEF0296"
 				roleview_list 	(list RoleViews
-				    (object RoleView "$UNNAMED$10" @16
-					Parent_View 	@15
-					location   	(581, 212)
+				    (object RoleView "$UNNAMED$10" @17
+					Parent_View 	@16
+					location   	(624, 338)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1AF00159"
-					client     	@15
+					client     	@16
 					supplier   	@4
 					vertices   	(list Points
-					    (1029, 756)
-					    (1553, 949))
+					    (1072, 882)
+					    (1639, 1190))
 					line_style 	0)
-				    (object RoleView "$UNNAMED$11" @17
-					Parent_View 	@15
-					location   	(581, 212)
+				    (object RoleView "$UNNAMED$11" @18
+					Parent_View 	@16
+					location   	(624, 338)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1AF0015B"
-					client     	@15
-					supplier   	@5
+					client     	@16
+					supplier   	@6
 					vertices   	(list Points
-					    (1029, 756)
-					    (505, 563))
+					    (1072, 882)
+					    (505, 574))
 					line_style 	0)))
-			    (object UseCaseView "Use Case View::价格管理::产品信息" @18
-				location   	(944, 1312)
-				font       	(object Font
-				    size       	10
-				    face       	"Arial"
-				    bold       	FALSE
-				    italics    	FALSE
-				    underline  	FALSE
-				    strike     	FALSE
-				    color      	0
-				    default_color 	TRUE)
-				label      	(object ItemLabel
-				    Parent_View 	@18
-				    location   	(944, 1450)
-				    anchor_loc 	1
-				    nlines     	2
-				    max_width  	630
-				    justify    	0
-				    label      	"产品信息")
-				icon_style 	"Icon"
-				line_color 	3342489
-				fill_color 	13434879
-				quidu      	"55BA0628005E"
-				height     	118)
 			    (object AssociationViewNew "$UNNAMED$12" @19
-				location   	(702, 938)
+				location   	(630, 1023)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -521,40 +586,40 @@
 				roleview_list 	(list RoleViews
 				    (object RoleView "$UNNAMED$13" @20
 					Parent_View 	@19
-					location   	(254, 394)
+					location   	(182, 479)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1AF20138"
 					client     	@19
-					supplier   	@18
+					supplier   	@5
 					vertices   	(list Points
-					    (702, 938)
-					    (906, 1254))
+					    (630, 1023)
+					    (744, 1317))
 					line_style 	0)
 				    (object RoleView "$UNNAMED$14" @21
 					Parent_View 	@19
-					location   	(254, 394)
+					location   	(182, 479)
 					stereotype 	TRUE
 					line_color 	3342489
 					quidu      	"55BA1AF2013A"
 					client     	@19
-					supplier   	@5
+					supplier   	@6
 					vertices   	(list Points
-					    (702, 938)
-					    (498, 622))
+					    (630, 1023)
+					    (517, 729))
 					line_style 	0)))
 			    (object DependencyView "" @22
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"55BA1B5B0088"
-				client     	@18
+				client     	@5
 				supplier   	@1
 				vertices   	(list Points
-				    (947, 1254)
-				    (1036, 323))
+				    (780, 1317)
+				    (1044, 227))
 				line_style 	0)
-			    (object UseCaseView "Use Case View::价格管理::浮动系数" @23
-				location   	(1344, 1296)
+			    (object UseCaseView "Use Case View::价格管理用例::浮动系数" @23
+				location   	(1248, 1536)
 				font       	(object Font
 				    size       	10
 				    face       	"Arial"
@@ -566,7 +631,7 @@
 				    default_color 	TRUE)
 				label      	(object ItemLabel
 				    Parent_View 	@23
-				    location   	(1344, 1434)
+				    location   	(1248, 1674)
 				    anchor_loc 	1
 				    nlines     	2
 				    max_width  	630
@@ -584,8 +649,8 @@
 				client     	@23
 				supplier   	@4
 				vertices   	(list Points
-				    (1402, 1238)
-				    (1569, 1079))
+				    (1342, 1478)
+				    (1644, 1304))
 				line_style 	0)
 			    (object DependencyView "" @25
 				stereotype 	TRUE
@@ -594,29 +659,1371 @@
 				client     	@23
 				supplier   	@3
 				vertices   	(list Points
-				    (1352, 1238)
-				    (1420, 883))
+				    (1273, 1478)
+				    (1516, 995))
 				line_style 	0)
 			    (object DependencyView "" @26
 				stereotype 	TRUE
 				line_color 	3342489
 				quidu      	"55BA24830062"
-				client     	@18
+				client     	@5
 				supplier   	@23
 				vertices   	(list Points
-				    (1052, 1305)
-				    (1233, 1298))
+				    (876, 1409)
+				    (1137, 1496))
 				line_style 	0)
-			    (object DependencyView "" @27
+			    (object UseCaseView "Use Case View::价格管理用例::创建" @27
+				location   	(2240, 80)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@27
+				    location   	(2240, 218)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	630
+				    justify    	0
+				    label      	"创建")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BAC8C30312"
+				height     	118)
+			    (object UseCaseView "Use Case View::价格管理用例::修改" @28
+				location   	(2496, 352)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@28
+				    location   	(2496, 490)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	630
+				    justify    	0
+				    label      	"修改")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BAC8C501C3"
+				height     	118)
+			    (object UseCaseView "Use Case View::价格管理用例::删除" @29
+				location   	(2384, 704)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@29
+				    location   	(2384, 842)
+				    anchor_loc 	1
+				    nlines     	2
+				    max_width  	630
+				    justify    	0
+				    label      	"删除")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BAC8C603CF"
+				height     	118)
+			    (object DependencyView "" @30
 				stereotype 	TRUE
 				line_color 	3342489
-				quidu      	"55BA23C501AB"
-				client     	@4
-				supplier   	@23
+				quidu      	"55BB09F4011E"
+				client     	@2
+				supplier   	@27
 				vertices   	(list Points
-				    (1569, 1079)
-				    (1402, 1238))
-				line_style 	0))))))
+				    (1532, 312)
+				    (2128, 113))
+				line_style 	0)
+			    (object DependencyView "" @31
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB09F6024F"
+				client     	@2
+				supplier   	@28
+				vertices   	(list Points
+				    (1532, 352)
+				    (2386, 352))
+				line_style 	0)
+			    (object DependencyView "" @32
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB09F80227"
+				client     	@2
+				supplier   	@29
+				vertices   	(list Points
+				    (1532, 389)
+				    (2274, 662))
+				line_style 	0)
+			    (object DependencyView "" @33
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	FALSE
+				line_color 	3342489
+				quidu      	"55BB0A1403CD"
+				client     	@4
+				supplier   	@27
+				vertices   	(list Points
+				    (1765, 1189)
+				    (2187, 195))
+				line_style 	0)
+			    (object DependencyView "" @34
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB0A17010E"
+				client     	@4
+				supplier   	@28
+				vertices   	(list Points
+				    (1789, 1190)
+				    (2443, 409))
+				line_style 	0)
+			    (object DependencyView "" @35
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB0A18033F"
+				client     	@4
+				supplier   	@29
+				vertices   	(list Points
+				    (1806, 1190)
+				    (2312, 760))
+				line_style 	0)))))
+	    (object Class_Category "Class View"
+		quid       	"55BB0D6C01EC"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list
+		    (object Class "基础价格"
+			quid       	"55BB0E44037B"
+			used_nodes 	(list uses_relationship_list
+			    (object Uses_Relationship
+				quid       	"55BB108B0328"
+				supplier   	"Use Case View::Class View::其他信息"
+				quidu      	"55BB10010168"))
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "价格名称"
+				quid       	"55BB0E5E0150"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "类型"
+				quid       	"55BB0E8103BD"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "状态"
+				quid       	"55BB0EA2004E"
+				type       	"Integer"
+				quidu      	"39CD6BC50328")
+			    (object ClassAttribute "价格明细"
+				quid       	"55BB0EC60011"
+				type       	"价格明细")
+			    (object ClassAttribute "其他信息"
+				quid       	"55BB0EDD017B"
+				type       	"其他信息")))
+		    (object Class "价格明细"
+			quid       	"55BB0E51035F"
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "城市"
+				quid       	"55BB0F1702FC"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "车型"
+				quid       	"55BB0F280331"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "起步价/套餐价"
+				quid       	"55BB0F3F0314"
+				type       	"Double")
+			    (object ClassAttribute "时长费/超时费"
+				quid       	"55BB0F640203"
+				type       	"Double")
+			    (object ClassAttribute "里程费/超里程费"
+				quid       	"55BB0F800371"
+				type       	"Double")
+			    (object ClassAttribute "预约金额限制"
+				quid       	"55BB0F9702E2"
+				type       	"Double")
+			    (object ClassAttribute "立即叫车金额限制"
+				quid       	"55BB0FAD0352"
+				type       	"Double")))
+		    (object Class "其他信息"
+			quid       	"55BB10010168"
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "新建人"
+				quid       	"55BB101C0244"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "新建时间"
+				quid       	"55BB102D03A4"
+				type       	"Date")
+			    (object ClassAttribute "修改人"
+				quid       	"55BB104302C0"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "修改时间"
+				quid       	"55BB1055006A"
+				type       	"Date")
+			    (object ClassAttribute "备注"
+				quid       	"55BB106A000C"
+				type       	"String"
+				quidu      	"39CD6AE1011A")))
+		    (object Class "NewClass"
+			quid       	"55BB100E00AC")
+		    (object Class "NewClass2"
+			quid       	"55BB100F00E9")
+		    (object Class "车型具体信息"
+			quid       	"55BB10DB0359"
+			used_nodes 	(list uses_relationship_list
+			    (object Uses_Relationship
+				quid       	"55BB1242018D"
+				supplier   	"Use Case View::Class View::操作人"
+				quidu      	"55BB10DD00F8"))
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "车组ID"
+				quid       	"55BB10F40183"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "车组名称"
+				quid       	"55BB1107003C"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "座位数"
+				quid       	"55BB11180102"
+				type       	"int")
+			    (object ClassAttribute "状态"
+				quid       	"55BB11210269"
+				type       	"int")
+			    (object ClassAttribute "排序"
+				quid       	"55BB11500101"
+				type       	"int")
+			    (object ClassAttribute "品牌"
+				quid       	"55BB116102C3"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "操作人"
+				quid       	"55BB1172015B"
+				type       	"操作人")))
+		    (object Class "操作人"
+			quid       	"55BB10DD00F8"
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "新建人"
+				quid       	"55BB11A3016A"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "新建时间"
+				quid       	"55BB11B30126"
+				type       	"Date")
+			    (object ClassAttribute "修改人"
+				quid       	"55BB11ED0322"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "修改时间"
+				quid       	"55BB11FF033B"
+				type       	"Date")
+			    (object ClassAttribute "备注"
+				quid       	"55BB12130355"
+				type       	"String"
+				quidu      	"39CD6AE1011A")))
+		    (object Class "时间因素"
+			quid       	"55BB153001EC"
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "名称"
+				quid       	"55BB155A00EB"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "状态"
+				quid       	"55BB156A031D"
+				type       	"int")
+			    (object ClassAttribute "循环类型"
+				quid       	"55BB157F01A0"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "循环周期"
+				quid       	"55BB15A001EE"
+				type       	"Double")
+			    (object ClassAttribute "新建人"
+				quid       	"55BB15B101BD"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "新建时间"
+				quid       	"55BB15C202DD"
+				type       	"Date")
+			    (object ClassAttribute "修改人"
+				quid       	"55BB15D5037C"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "修改时间"
+				quid       	"55BB15E5022F"
+				type       	"Date")
+			    (object ClassAttribute "备注"
+				quid       	"55BB15F5011C"
+				type       	"String"
+				quidu      	"39CD6AE1011A")))
+		    (object Class "价格系数"
+			quid       	"55BB161B021D"
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "价格名称"
+				quid       	"55BB16800386"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "状态"
+				quid       	"55BB16A30395"
+				type       	"int")
+			    (object ClassAttribute "备注"
+				quid       	"55BB16BB03DD"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "城市"
+				quid       	"55BB16CB00DD"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "车型"
+				quid       	"55BB16DC027C"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "浮动价格"
+				quid       	"55BB16EC0303"
+				type       	"浮动价格"
+				quidu      	"55BB1C5C0385")
+			    (object ClassAttribute "其他信息"
+				quid       	"55BB1704015D"
+				type       	"其他信息"
+				quidu      	"55BB10010168")))
+		    (object Class "产品信息"
+			quid       	"55BB162D019D"
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "产品ID"
+				quid       	"55BB1B1B024B"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "产品名称"
+				quid       	"55BB1B270393"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "编号"
+				quid       	"55BB1B470032"
+				type       	"String"
+				quidu      	"39CD6AE1011A")
+			    (object ClassAttribute "基础价格"
+				quid       	"55BB1B630303"
+				type       	"基础价格"
+				quidu      	"55BB0E44037B")
+			    (object ClassAttribute "排序"
+				quid       	"55BB1B770047"
+				type       	"int")
+			    (object ClassAttribute "状态"
+				quid       	"55BB1B8F02E3"
+				type       	"int")
+			    (object ClassAttribute "浮动价格"
+				quid       	"55BB1B9D018B"
+				type       	"浮动价格"
+				quidu      	"55BB1C5C0385")))
+		    (object Class "浮动价格"
+			quid       	"55BB1C5C0385"
+			used_nodes 	(list uses_relationship_list
+			    (object Uses_Relationship
+				quid       	"55BB1CD80341"
+				supplier   	"Use Case View::Class View::价格系数"
+				quidu      	"55BB161B021D"))
+			class_attributes 	(list class_attribute_list
+			    (object ClassAttribute "价格系数"
+				quid       	"55BB1C7201D3"
+				type       	"价格系数"
+				quidu      	"55BB161B021D")
+			    (object ClassAttribute "时间因素"
+				quid       	"55BB1C9802F2"
+				type       	"时间因素"
+				quidu      	"55BB153001EC")))
+		    (object Association "$UNNAMED$15"
+			quid       	"55BB0FE002D4"
+			stereotype 	"include"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$16"
+				quid       	"55BB0FE101A8"
+				supplier   	"Use Case View::Class View::价格明细"
+				quidu      	"55BB0E51035F"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$17"
+				quid       	"55BB0FE101AA"
+				supplier   	"Use Case View::Class View::基础价格"
+				quidu      	"55BB0E44037B")))
+		    (object Association "$UNNAMED$18"
+			quid       	"55BB109E0306"
+			stereotype 	"include"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$19"
+				quid       	"55BB10A00127"
+				supplier   	"Use Case View::Class View::其他信息"
+				quidu      	"55BB10010168"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$20"
+				quid       	"55BB10A0012F"
+				supplier   	"Use Case View::Class View::基础价格"
+				quidu      	"55BB0E44037B")))
+		    (object Association "$UNNAMED$21"
+			quid       	"55BB12550172"
+			stereotype 	"include"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$22"
+				quid       	"55BB12560030"
+				supplier   	"Use Case View::Class View::操作人"
+				quidu      	"55BB10DD00F8"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$23"
+				quid       	"55BB12560039"
+				supplier   	"Use Case View::Class View::车型具体信息"
+				quidu      	"55BB10DB0359")))
+		    (object Association "$UNNAMED$24"
+			quid       	"55BB15150178"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$25"
+				quid       	"55BB151600C1"
+				supplier   	"Use Case View::Class View::操作人"
+				quidu      	"55BB10DD00F8"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$26"
+				quid       	"55BB151600CB"
+				supplier   	"Use Case View::Class View::车型具体信息"
+				quidu      	"55BB10DB0359")))
+		    (object Association "$UNNAMED$27"
+			quid       	"55BB17D80021"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$28"
+				quid       	"55BB17D80281"
+				supplier   	"Use Case View::Class View::其他信息"
+				quidu      	"55BB10010168"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$29"
+				quid       	"55BB17D80288"
+				supplier   	"Use Case View::Class View::价格系数"
+				quidu      	"55BB161B021D")))
+		    (object Association "$UNNAMED$30"
+			quid       	"55BB1CEB01A3"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$31"
+				quid       	"55BB1CEC01F1"
+				supplier   	"Use Case View::Class View::价格系数"
+				quidu      	"55BB161B021D"
+				client_cardinality 	(value cardinality "1")
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$32"
+				quid       	"55BB1CEC01F5"
+				supplier   	"Use Case View::Class View::浮动价格"
+				quidu      	"55BB1C5C0385"
+				client_cardinality 	(value cardinality "1"))))
+		    (object Association "$UNNAMED$33"
+			quid       	"55BB1F990384"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$34"
+				quid       	"55BB1F9C0094"
+				supplier   	"Use Case View::Class View::时间因素"
+				quidu      	"55BB153001EC"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$35"
+				quid       	"55BB1F9C009C"
+				supplier   	"Use Case View::Class View::浮动价格"
+				quidu      	"55BB1C5C0385")))
+		    (object Association "$UNNAMED$36"
+			quid       	"55BB1FC2006A"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$37"
+				quid       	"55BB1FC4020A"
+				supplier   	"Use Case View::Class View::浮动价格"
+				quidu      	"55BB1C5C0385"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$38"
+				quid       	"55BB1FC4020E"
+				supplier   	"Use Case View::Class View::产品信息"
+				quidu      	"55BB162D019D")))
+		    (object Association "$UNNAMED$39"
+			quid       	"55BB201803DD"
+			roles      	(list role_list
+			    (object Role "$UNNAMED$40"
+				quid       	"55BB201903A2"
+				supplier   	"Use Case View::Class View::基础价格"
+				quidu      	"55BB0E44037B"
+				is_navigable 	TRUE)
+			    (object Role "$UNNAMED$41"
+				quid       	"55BB201903A5"
+				supplier   	"Use Case View::Class View::产品信息"
+				quidu      	"55BB162D019D"))))
+		logical_presentations 	(list unit_reference_list
+		    (object ClassDiagram "价格管理"
+			quid       	"55BB0DDA01EC"
+			title      	"价格管理"
+			zoom       	100
+			max_height 	28350
+			max_width  	21600
+			origin_x   	0
+			origin_y   	0
+			items      	(list diagram_item_list
+			    (object ClassView "Class" "Use Case View::Class View::价格明细" @36
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2848, 800)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@36
+				    location   	(2566, 569)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	564
+				    justify    	0
+				    label      	"价格明细")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB0E51035F"
+				compartment 	(object Compartment
+				    Parent_View 	@36
+				    location   	(2566, 630)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	8
+				    max_width  	621
+				    justify    	1)
+				width      	582
+				height     	486
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Use Case View::Class View::车型具体信息" @37
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(192, 912)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@37
+				    location   	(7, 681)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	370
+				    justify    	0
+				    label      	"车型具体信息")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB10DB0359"
+				compartment 	(object Compartment
+				    Parent_View 	@37
+				    location   	(7, 742)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	8
+				    max_width  	403
+				    justify    	1)
+				width      	388
+				height     	486
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Use Case View::Class View::操作人" @38
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(704, 1424)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@38
+				    location   	(529, 1243)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	350
+				    justify    	0
+				    label      	"操作人")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB10DD00F8"
+				compartment 	(object Compartment
+				    Parent_View 	@38
+				    location   	(529, 1304)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	6
+				    max_width  	381
+				    justify    	1)
+				width      	368
+				height     	386
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$24" @39
+				location   	(452, 1172)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB15150178"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$25" @40
+					Parent_View 	@39
+					location   	(-76, -28)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB151600C1"
+					client     	@39
+					supplier   	@38
+					vertices   	(list Points
+					    (452, 1172)
+					    (519, 1239))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$26" @41
+					Parent_View 	@39
+					location   	(-76, -28)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB151600CB"
+					client     	@39
+					supplier   	@37
+					vertices   	(list Points
+					    (452, 1172)
+					    (386, 1106))
+					line_style 	0)))
+			    (object ClassView "Class" "Use Case View::Class View::其他信息" @42
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2080, 1024)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@42
+				    location   	(1905, 843)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	350
+				    justify    	0
+				    label      	"其他信息")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB10010168"
+				compartment 	(object Compartment
+				    Parent_View 	@42
+				    location   	(1905, 904)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	6
+				    max_width  	381
+				    justify    	1)
+				width      	368
+				height     	386
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Use Case View::Class View::价格系数" @43
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2176, 1760)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@43
+				    location   	(1956, 1529)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	440
+				    justify    	0
+				    label      	"价格系数")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB161B021D"
+				compartment 	(object Compartment
+				    Parent_View 	@43
+				    location   	(1956, 1590)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	8
+				    max_width  	437
+				    justify    	1)
+				width      	458
+				height     	486
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$27" @44
+				location   	(2123, 1366)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB17D80021"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$28" @45
+					Parent_View 	@44
+					location   	(-37, -378)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB17D80281"
+					client     	@44
+					supplier   	@42
+					vertices   	(list Points
+					    (2123, 1366)
+					    (2104, 1217))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$29" @46
+					Parent_View 	@44
+					location   	(-37, -378)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB17D80288"
+					client     	@44
+					supplier   	@43
+					vertices   	(list Points
+					    (2123, 1366)
+					    (2143, 1516))
+					line_style 	0)))
+			    (object ClassView "Class" "Use Case View::Class View::时间因素" @47
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(960, 2048)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@47
+				    location   	(765, 1767)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	390
+				    justify    	0
+				    label      	"时间因素")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB153001EC"
+				compartment 	(object Compartment
+				    Parent_View 	@47
+				    location   	(765, 1828)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	10
+				    max_width  	421
+				    justify    	1)
+				width      	408
+				height     	586
+				annotation 	8
+				autoResize 	TRUE)
+			    (object ClassView "Class" "Use Case View::Class View::浮动价格" @48
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1232, 1312)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@48
+				    location   	(1012, 1206)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	440
+				    justify    	0
+				    label      	"浮动价格")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB1C5C0385"
+				compartment 	(object Compartment
+				    Parent_View 	@48
+				    location   	(1012, 1267)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	3
+				    max_width  	496
+				    justify    	1)
+				width      	458
+				height     	236
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$30" @49
+				location   	(1703, 1535)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB1CEB01A3"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$31" @50
+					Parent_View 	@49
+					location   	(439, -353)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB1CEC01F1"
+					client     	@49
+					supplier   	@43
+					vertices   	(list Points
+					    (1703, 1535)
+					    (1946, 1650))
+					line_style 	0
+					label      	(object SegLabel @51
+					    Parent_View 	@50
+					    location   	(1900, 1688)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    anchor     	2
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	15
+					    justify    	0
+					    label      	"1"
+					    pctDist    	0.900000
+					    height     	54
+					    orientation 	1))
+				    (object RoleView "$UNNAMED$32" @52
+					Parent_View 	@49
+					location   	(439, -353)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB1CEC01F5"
+					client     	@49
+					supplier   	@48
+					vertices   	(list Points
+					    (1703, 1535)
+					    (1461, 1420))
+					line_style 	0
+					label      	(object SegLabel @53
+					    Parent_View 	@52
+					    location   	(1464, 1481)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    anchor     	2
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	15
+					    justify    	0
+					    label      	"1"
+					    pctDist    	0.900000
+					    height     	54
+					    orientation 	0))))
+			    (object AssociationViewNew "$UNNAMED$33" @54
+				location   	(1127, 1592)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB1F990384"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$34" @55
+					Parent_View 	@54
+					location   	(-137, -296)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB1F9C0094"
+					client     	@54
+					supplier   	@47
+					vertices   	(list Points
+					    (1127, 1592)
+					    (1068, 1754))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$35" @56
+					Parent_View 	@54
+					location   	(-137, -296)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB1F9C009C"
+					client     	@54
+					supplier   	@48
+					vertices   	(list Points
+					    (1127, 1592)
+					    (1187, 1430))
+					line_style 	0)))
+			    (object ClassView "Class" "Use Case View::Class View::产品信息" @57
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(1152, 240)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@57
+				    location   	(932, 9)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	440
+				    justify    	0
+				    label      	"产品信息")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB162D019D"
+				compartment 	(object Compartment
+				    Parent_View 	@57
+				    location   	(932, 70)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	8
+				    max_width  	496
+				    justify    	1)
+				width      	458
+				height     	486
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$36" @58
+				location   	(1195, 838)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB1FC2006A"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$37" @59
+					Parent_View 	@58
+					location   	(43, 438)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB1FC4020A"
+					client     	@58
+					supplier   	@48
+					vertices   	(list Points
+					    (1195, 838)
+					    (1222, 1193))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$38" @60
+					Parent_View 	@58
+					location   	(43, 438)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB1FC4020E"
+					client     	@58
+					supplier   	@57
+					vertices   	(list Points
+					    (1195, 838)
+					    (1169, 483))
+					line_style 	0)))
+			    (object ClassView "Class" "Use Case View::Class View::基础价格" @61
+				ShowCompartmentStereotypes 	TRUE
+				IncludeAttribute 	TRUE
+				IncludeOperation 	TRUE
+				location   	(2000, 416)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				label      	(object ItemLabel
+				    Parent_View 	@61
+				    location   	(1780, 235)
+				    fill_color 	13434879
+				    nlines     	1
+				    max_width  	440
+				    justify    	0
+				    label      	"基础价格")
+				icon_style 	"Icon"
+				line_color 	3342489
+				fill_color 	13434879
+				quidu      	"55BB0E44037B"
+				compartment 	(object Compartment
+				    Parent_View 	@61
+				    location   	(1780, 296)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    icon_style 	"Icon"
+				    fill_color 	13434879
+				    anchor     	2
+				    nlines     	6
+				    max_width  	496
+				    justify    	1)
+				width      	458
+				height     	386
+				annotation 	8
+				autoResize 	TRUE)
+			    (object AssociationViewNew "$UNNAMED$15" @62
+				location   	(2392, 594)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	(object SegLabel @63
+				    Parent_View 	@62
+				    location   	(2459, 573)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    anchor     	10
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	450
+				    justify    	0
+				    label      	"<<include>>"
+				    pctDist    	1.616667
+				    height     	22
+				    orientation 	0)
+				line_color 	3342489
+				quidu      	"55BB0FE002D4"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$16" @64
+					Parent_View 	@62
+					location   	(1144, 338)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB0FE101A8"
+					client     	@62
+					supplier   	@36
+					vertices   	(list Points
+					    (2392, 594)
+					    (2556, 668))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$17" @65
+					Parent_View 	@62
+					location   	(1144, 338)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB0FE101AA"
+					client     	@62
+					supplier   	@61
+					vertices   	(list Points
+					    (2392, 594)
+					    (2229, 520))
+					line_style 	0)))
+			    (object AssociationViewNew "$UNNAMED$18" @66
+				location   	(2039, 719)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	(object SegLabel @67
+				    Parent_View 	@66
+				    location   	(2023, 710)
+				    font       	(object Font
+					size       	10
+					face       	"Arial"
+					bold       	FALSE
+					italics    	FALSE
+					underline  	FALSE
+					strike     	FALSE
+					color      	0
+					default_color 	TRUE)
+				    anchor     	10
+				    anchor_loc 	1
+				    nlines     	1
+				    max_width  	450
+				    justify    	0
+				    label      	"<<include>>"
+				    pctDist    	0.233333
+				    height     	10
+				    orientation 	0)
+				line_color 	3342489
+				quidu      	"55BB109E0306"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$19" @68
+					Parent_View 	@66
+					location   	(791, 463)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB10A00127"
+					client     	@66
+					supplier   	@42
+					vertices   	(list Points
+					    (2039, 719)
+					    (2054, 830))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$20" @69
+					Parent_View 	@66
+					location   	(791, 463)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB10A0012F"
+					client     	@66
+					supplier   	@61
+					vertices   	(list Points
+					    (2039, 719)
+					    (2025, 609))
+					line_style 	0)))
+			    (object AssociationViewNew "$UNNAMED$39" @70
+				location   	(1575, 327)
+				font       	(object Font
+				    size       	10
+				    face       	"Arial"
+				    bold       	FALSE
+				    italics    	FALSE
+				    underline  	FALSE
+				    strike     	FALSE
+				    color      	0
+				    default_color 	TRUE)
+				stereotype 	TRUE
+				line_color 	3342489
+				quidu      	"55BB201803DD"
+				roleview_list 	(list RoleViews
+				    (object RoleView "$UNNAMED$40" @71
+					Parent_View 	@70
+					location   	(423, 87)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB201903A2"
+					client     	@70
+					supplier   	@61
+					vertices   	(list Points
+					    (1575, 327)
+					    (1770, 368))
+					line_style 	0)
+				    (object RoleView "$UNNAMED$41" @72
+					Parent_View 	@70
+					location   	(423, 87)
+					stereotype 	TRUE
+					line_color 	3342489
+					quidu      	"55BB201903A5"
+					client     	@70
+					supplier   	@57
+					vertices   	(list Points
+					    (1575, 327)
+					    (1381, 286))
+					line_style 	0))))))))
 	logical_presentations 	(list unit_reference_list
 	    (object UseCaseDiagram ""
 		quid       	"39C9261001B7"
@@ -648,7 +2055,12 @@
 		is_unit    	TRUE
 		is_loaded  	FALSE
 		file_name  	"$FRAMEWORK_PATH\\Shared Components\\j2se_1_3_org.cat"
-		quid       	"39C92693036F"))
+		quid       	"39C92693036F")
+	    (object Class_Category "Price Manage"
+		quid       	"55BB0C8A01E7"
+		exportControl 	"Public"
+		logical_models 	(list unit_reference_list)
+		logical_presentations 	(list unit_reference_list)))
 	logical_presentations 	(list unit_reference_list
 	    (object ClassDiagram "Package Hierarchy"
 		quid       	"39C9261001B8"
@@ -659,7 +2071,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object CategoryView "Logical View::java" @28
+		    (object CategoryView "Logical View::java" @73
 			location   	(208, 272)
 			font       	(object Font
 			    size       	10
@@ -671,7 +2083,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@28
+			    Parent_View 	@73
 			    location   	(64, 188)
 			    nlines     	2
 			    max_width  	288
@@ -683,7 +2095,7 @@
 			quidu      	"39C92661003B"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::javax" @29
+		    (object CategoryView "Logical View::javax" @74
 			location   	(656, 272)
 			font       	(object Font
 			    size       	10
@@ -695,7 +2107,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@29
+			    Parent_View 	@74
 			    location   	(512, 188)
 			    nlines     	2
 			    max_width  	288
@@ -707,7 +2119,7 @@
 			quidu      	"39C926610018"
 			width      	300
 			height     	180)
-		    (object CategoryView "Logical View::org" @30
+		    (object CategoryView "Logical View::org" @75
 			location   	(1104, 272)
 			font       	(object Font
 			    size       	10
@@ -719,7 +2131,7 @@
 			    color      	0
 			    default_color 	TRUE)
 			label      	(object ItemLabel
-			    Parent_View 	@30
+			    Parent_View 	@75
 			    location   	(960, 188)
 			    nlines     	2
 			    max_width  	288
@@ -740,7 +2152,7 @@
 		origin_x   	0
 		origin_y   	0
 		items      	(list diagram_item_list
-		    (object NoteView @31
+		    (object NoteView @76
 			location   	(224, 624)
 			font       	(object Font
 			    size       	10
@@ -755,7 +2167,7 @@
 			fill_color 	12632256
 			width      	300
 			height     	132)
-		    (object NoteView @32
+		    (object NoteView @77
 			location   	(704, 624)
 			font       	(object Font
 			    size       	10
@@ -770,7 +2182,7 @@
 			fill_color 	8421631
 			width      	300
 			height     	132)
-		    (object NoteView @33
+		    (object NoteView @78
 			location   	(1200, 624)
 			font       	(object Font
 			    size       	10
@@ -785,7 +2197,7 @@
 			fill_color 	12615680
 			width      	300
 			height     	132)
-		    (object NoteView @34
+		    (object NoteView @79
 			location   	(1664, 624)
 			font       	(object Font
 			    size       	10
@@ -800,7 +2212,7 @@
 			fill_color 	16777215
 			width      	300
 			height     	132)
-		    (object Label @35
+		    (object Label @80
 			location   	(81, 369)
 			font       	(object Font
 			    size       	12
@@ -815,7 +2227,7 @@
 			max_width  	1163
 			justify    	1
 			label      	"J2EE: Java 2 Platform, Enterprise Edition - v 1.2.1")
-		    (object Label @36
+		    (object Label @81
 			location   	(96, 608)
 			font       	(object Font
 			    size       	10
@@ -830,7 +2242,7 @@
 			max_width  	268
 			justify    	1
 			label      	"Abstract Class")
-		    (object Label @37
+		    (object Label @82
 			location   	(592, 608)
 			font       	(object Font
 			    size       	10
@@ -845,7 +2257,7 @@
 			max_width  	225
 			justify    	1
 			label      	"Final Class")
-		    (object Label @38
+		    (object Label @83
 			location   	(1104, 608)
 			font       	(object Font
 			    size       	10
@@ -860,7 +2272,7 @@
 			max_width  	206
 			justify    	1
 			label      	"Interface")
-		    (object Label @39
+		    (object Label @84
 			location   	(1552, 608)
 			font       	(object Font
 			    size       	10
